@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <!--UserFilter配置信息-->
+    <!--用户信息存放到session中的键的名字-->
+    <context-param>
+        <param-name>userSessionKey</param-name>
+        <param-value>username</param-value>
+    </context-param>
+    <!--若未登录，需要重定向的页面-->
+    <context-param>
+        <param-name>redirectPage</param-name>
+        <param-value>/login.jsp</param-value>
+    </context-param>
+    <!--不需要拦截的URL列表;注意配置时不要拦截后台对用户和密码判断的页面,否则可能登录登录不进主界面-->
+    <context-param>
+        <param-name>unCheckedUrls</param-name>
+        <param-value>
+            /index.jsp,/test.jsp,/login.jsp,/js/jquery-3.2.1.js,/js/bootstrap.min.js,/css/bootstrap.min.css,/insert_user.jsp,/insert_finish.jsp,/register.jsp,/login_checking.jsp,/login_checked_fail.jsp,
+        </param-value>
+    </context-param>
+    <filter>
+        <filter-name>UserFilter</filter-name>
+        <filter-class>Filter.UserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <!--过滤站点下所有网页-->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>ajax_receive</servlet-name>
+        <servlet-class>servlet.ajax_request_receive</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajax_receive</servlet-name>
+        <url-pattern>/ajax</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>order_manage_ajax_receive</servlet-name>
+        <servlet-class>servlet.order_manage_ajax_receive</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>order_manage_ajax_receive</servlet-name>
+        <url-pattern>/order_manage_ajax_receive</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ajax_deleteOrders</servlet-name>
+        <servlet-class>servlet.ajax_deleteOrders</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajax_deleteOrders</servlet-name>
+        <url-pattern>/ajax_deleteOrders</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ajax_query_commodity_management_module</servlet-name>
+        <servlet-class>servlet.ajax_query_commodity_management_module</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajax_query_commodity_management_module</servlet-name>
+        <url-pattern>/ajax_query_commodity_management_module</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ajax_deleteProducts</servlet-name>
+        <servlet-class>servlet.ajax_deleteProducts</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajax_deleteProducts</servlet-name>
+        <url-pattern>/ajax_deleteProducts</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>insertNewProductsMessages</servlet-name>
+        <servlet-class>servlet.insertNewProductsMessages</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>insertNewProductsMessages</servlet-name>
+        <url-pattern>/insertNewProductsMessages</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>updateProductMessages</servlet-name>
+        <servlet-class>servlet.updateProductMessages</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateProductMessages</servlet-name>
+        <url-pattern>/updateProductMessages</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>updateAnnouncement</servlet-name>
+        <servlet-class>servlet.updateAnnouncement</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateAnnouncement</servlet-name>
+        <url-pattern>/updateAnnouncement</url-pattern>
+    </servlet-mapping>
+    <!--欢迎页-->
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>

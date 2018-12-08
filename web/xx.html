@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>图书查询</title>
+    <script src="./js/jquery-3.2.1.js"></script><!--引入jquery框架-->
+    <script src="./js/bootstrap.min.js"></script>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".search_book").click(function(event) {
+                $.ajax({
+                    type:'get',
+                    url:'/ajax',
+                    data:
+                    {
+                        book_type:$(this).attr('id')
+                    },
+                    cache:true,
+                    dataType:'text',
+                    success:function(data){
+                        console.log(data);
+                    },
+                    error :function(e){
+                        console.log("error!" + e);
+                    }
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        
+    </div>
+</body>
+</html>
