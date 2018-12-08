@@ -16,3 +16,7 @@ url="jdbc:mysql://你的数据库IP地址:3306/你的数据库名称?characterEn
 文件名字为“181208144708.psc”为数据库备份，将备份还原至你的数据库即可
 
 项目源码为IDEA编写，请用IEAD打开
+
+IDEA-New Project-选择Web Application,Application Server选择Tomcat，确定即可
+然后倒入jar包，jar包目录在WEB-INF/lib下
+编译器中配置Tomcat的Application context:/tomcat即可
