@@ -17,6 +17,4 @@ url="jdbc:mysql://你的数据库IP地址:3306/你的数据库名称?characterEn
 
 项目源码为IDEA编写，请用IEAD打开
 
-IDEA-New Project-选择Web Application,Application Server选择Tomcat，确定即可
-然后倒入jar包，jar包目录在WEB-INF/lib下
-编译器中配置Tomcat的Application context:/tomcat即可
+配置好Tomcat路径和jdk路径即可
